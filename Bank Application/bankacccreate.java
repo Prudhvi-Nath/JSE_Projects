@@ -52,7 +52,8 @@ OracleConnectionPoolDataSource ocp;
 		//PooledConnection is an interface
 		con=pc.getConnection();//then by that creating connection to database
 		//getConnection() is a abstract method with the return type Connection
-		if(typeofacc.equalsIgnoreCase("savings")&&balance>=5000){
+	           if(typeofacc.equalsIgnoreCase("savings")){
+		    if(balance>=5000){
 		PreparedStatement ps=con.prepareStatement("insert into bankaccholder values(?,?,?,?,?)");
 		ps.setInt(1,bac.id);
 		ps.setString(2,bac.name);
@@ -60,9 +61,14 @@ OracleConnectionPoolDataSource ocp;
 		ps.setDouble(4,bac.balance);
 		ps.setString(5,bac.typeofacc);
 		count=ps.executeUpdate();
+			}
+		    else{
+			System.out.println("intial depositing balance in savings account should be more than 5000");
+			}
 		   }//if closed		
 
-		else if(typeofacc.equalsIgnoreCase("current")&&balance>=10000){
+		else if(typeofacc.equalsIgnoreCase("current")){
+		      if(balance>=10000){
 		PreparedStatement ps=con.prepareStatement("insert into bankaccholder values(?,?,?,?,?)");
 		ps.setDouble(1,bac.id);
 		ps.setString(2,bac.name);
@@ -70,6 +76,11 @@ OracleConnectionPoolDataSource ocp;
 		ps.setDouble(4,bac.balance);
 		ps.setString(5,bac.typeofacc);
 		count=ps.executeUpdate();
+			}
+		      else{
+			System.out.println("initial deposit balance in current account should be more than 10000");
+			
+			}
 		}//else if closed
 		else{
 		    System.out.println("Invalid account type or balance was not meet the requirement");	
