@@ -35,7 +35,7 @@ OracleConnectionPoolDataSource ocp;
 		pass=scan.next();
 		System.out.println("enter the minimum balance deposit while account creation:");
 		balance=scan.nextDouble();
-		System.out.println("enter the type of account:");
+		System.out.println("enter the type of account is it savings or current:");
 		typeofacc=scan.next();
 		}
 		catch(Exception e){
